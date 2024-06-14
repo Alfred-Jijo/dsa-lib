@@ -12,15 +12,15 @@ typedef struct Stack {
 } Stack;
 
 struct Stack createStack(unsigned);
-int isFull(struct Stack*);
-int isEmpty(struct Stack*);
-void push(struct Stack*, int);
-int pop(struct Stack*);
-int peek(struct Stack*);
+unsigned int isFull(struct Stack *__restrict);
+int isEmpty(struct Stack *__restrict);
+void push(struct Stack *__restrict, int);
+int pop(struct Stack *__restrict);
+int peek(struct Stack * __restrict);
 
 #ifndef _DSA_LIB_H_IMPLEMTATION_
 
-Stack createStack(unsigned capacity) {
+Stack createStack(unsigned int capacity) {
     Stack stack;
     stack.capacity = capacity;
     stack.top = -1;
@@ -32,32 +32,32 @@ Stack createStack(unsigned capacity) {
     return stack;
 }
 
-int isFull(struct Stack* stack) {
+unsigned int isFull(struct Stack *restrict stack) {
     return (unsigned)stack->top == stack->capacity - 1;
 }
 
-int isEmpty(struct Stack* stack) {
+int isEmpty(struct Stack *restrict stack) {
     return stack->top == -1;
 }
 
-void push(struct Stack* stack, int item) {
+void push(struct Stack *restrict stack, int item) {
     if (isFull(stack)) {
-        printf("Stack overflow\n");
+        printf("Stack Is Full\n");
         return;
     }
     stack->array[++stack->top] = item;
     printf("%d pushed to stack\n", item);
 }
 
-int pop(struct Stack* stack) {
+int pop(struct Stack *restrict stack) {
     if (isEmpty(stack)) {
-        printf("Stack underflow\n");
+        printf("Stack Is Empty\n");
         return -1;
     }
     return stack->array[stack->top--];
 }
 
-int peek(struct Stack* stack) {
+int peek(struct Stack *restrict stack) {
     if (isEmpty(stack)) {
         printf("Stack is empty\n");
         return -1;
@@ -65,5 +65,5 @@ int peek(struct Stack* stack) {
     return stack->array[stack->top];
 }
 
-#endif
-#endif
+#endif // _DSA_LIB_H_IMPLEMTATION_
+#endif // _DSA_LIB_H_
