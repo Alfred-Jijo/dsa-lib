@@ -20,7 +20,6 @@ int peek(struct Stack*);
 
 #ifndef _DSA_LIB_H_IMPLEMTATION_
 
-// Function to create a stack of given capacity
 Stack createStack(unsigned capacity) {
     Stack stack;
     stack.capacity = capacity;
@@ -33,17 +32,14 @@ Stack createStack(unsigned capacity) {
     return stack;
 }
 
-// Check if the stack is full
 int isFull(struct Stack* stack) {
     return (unsigned)stack->top == stack->capacity - 1;
 }
 
-// Check if the stack is empty
 int isEmpty(struct Stack* stack) {
     return stack->top == -1;
 }
 
-// Push an element onto the stack
 void push(struct Stack* stack, int item) {
     if (isFull(stack)) {
         printf("Stack overflow\n");
@@ -53,7 +49,6 @@ void push(struct Stack* stack, int item) {
     printf("%d pushed to stack\n", item);
 }
 
-// Pop an element from the stack
 int pop(struct Stack* stack) {
     if (isEmpty(stack)) {
         printf("Stack underflow\n");
@@ -62,7 +57,6 @@ int pop(struct Stack* stack) {
     return stack->array[stack->top--];
 }
 
-// Get the top element of the stack
 int peek(struct Stack* stack) {
     if (isEmpty(stack)) {
         printf("Stack is empty\n");

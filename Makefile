@@ -1,18 +1,19 @@
-NAME = template
-VERSION = 0.0.0
+NAME = dsa
+VERSION = 0.0.1
 PREFIX ?= $(HOME)/.local
 
 CC ?= gcc
 CFLAGS = -Wall -Wextra -Werror -pedantic -Wno-unused-parameter -Wshadow -std=c99
+LOGFLAGS = -DLOG_USE_COLOR
 
-SRC = lib/ds.c lib/log/src/log.c lib/macros.c src/main.c
+SRC = lib/dsa.c lib/log/src/log.c lib/macros.c src/main.c
 OBJ = $(SRC:%.c=%.o)
 INCLUDE = -Iinclude -Ilib/log/src
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(INCLUDE)
+	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LOGFLAGS) $(INCLUDE)
 
 .c.o:
 	$(CC) -c $< -o $@ $(CFLAGS) $(INCLUDE)
