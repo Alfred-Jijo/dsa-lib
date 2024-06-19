@@ -21,6 +21,9 @@ $(NAME): $(OBJ)
 run: $(NAME)
 	./$(NAME)
 
+asm:
+	gcc -O3 -S src/main.c -o output.asm $(INCLUDE)
+
 clean:
 	$(RM) $(OBJ)
 	$(RM) $(NAME)

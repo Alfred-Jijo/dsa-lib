@@ -7,22 +7,29 @@
 
 static const int STACK_CAPACITY = 8;
 
+static void stackTesting(Stack *);
+
 int main(void) {
-	printf("Hello, World!\n");
 	Stack stack = createStack(STACK_CAPACITY);
+	stackTesting(&stack);
+	printf("Hello, World!\n");
+	return 0;
+}
+
+static void stackTesting(Stack *pStack) {
 
 	for (int i = 0; i < STACK_CAPACITY; i++) {
-		if (isFull(&stack)) { 
+		if (isFull(pStack)) { 
 			perror("Stack is full");
 			break;
 		}
-		push(&stack, i);
+		push(pStack, i);
 	}
 
-	push(&stack, 8);
+	push(pStack, 8);
 
 	for (int i = 0; i < STACK_CAPACITY; i++) {
-		printf("%d\n", pop(&stack));
+		printf("%d\n", pop(pStack));
 	}
-	return 0;
+
 }
