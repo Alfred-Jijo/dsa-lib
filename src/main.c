@@ -4,6 +4,7 @@
 #include <log.h>
 
 #include <stdio.h>
+/* #include <assert.h> */
 
 static const int STACK_CAPACITY = 8;
 
@@ -12,7 +13,6 @@ static void stackTesting(Stack *);
 int main(void) {
 	Stack stack = createStack(STACK_CAPACITY);
 	stackTesting(&stack);
-	printf("Hello, World!\n");
 	return 0;
 }
 
