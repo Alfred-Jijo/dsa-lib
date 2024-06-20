@@ -4,16 +4,15 @@ PREFIX ?= $(HOME)/.local
 
 CC ?= gcc
 CFLAGS = -Wall -Wextra -Werror -pedantic -Wno-unused-parameter -Wshadow -std=c99
-LOGFLAGS = -DLOG_USE_COLOR
 
-SRC = lib/dsa.c lib/log/src/log.c lib/macros.c src/main.c
+SRC = lib/dsa.c lib/macros.c src/main.c
 OBJ = $(SRC:%.c=%.o)
-INCLUDE = -Iinclude -Ilib/log/src
+INCLUDE = -Iinclude 
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(LOGFLAGS) $(INCLUDE)
+	$(CC) $(OBJ) -o $(NAME) $(CFLAGS) $(INCLUDE)
 
 .c.o:
 	$(CC) -c $< -o $@ $(CFLAGS) $(INCLUDE)
